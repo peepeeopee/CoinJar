@@ -3,7 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoinJar.Application", "CoinJar.Application\CoinJar.Application.csproj", "{68BC58C8-63BD-4F17-8C80-A19A1A36B7E2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application", "src\CoinJar.Application\Application.csproj", "{68BC58C8-63BD-4F17-8C80-A19A1A36B7E2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{4A84D1B8-7A19-41B0-9E58-26F3FF718D69}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{12369571-E1E1-4A56-8198-8DBB5205DA4C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application.UnitTests", "test\CoinJar.Application.UnitTests\Application.UnitTests.csproj", "{B64D2164-29F3-42E2-A89A-FE95B9785099}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,9 +21,17 @@ Global
 		{68BC58C8-63BD-4F17-8C80-A19A1A36B7E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{68BC58C8-63BD-4F17-8C80-A19A1A36B7E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{68BC58C8-63BD-4F17-8C80-A19A1A36B7E2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B64D2164-29F3-42E2-A89A-FE95B9785099}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B64D2164-29F3-42E2-A89A-FE95B9785099}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B64D2164-29F3-42E2-A89A-FE95B9785099}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B64D2164-29F3-42E2-A89A-FE95B9785099}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{68BC58C8-63BD-4F17-8C80-A19A1A36B7E2} = {4A84D1B8-7A19-41B0-9E58-26F3FF718D69}
+		{B64D2164-29F3-42E2-A89A-FE95B9785099} = {12369571-E1E1-4A56-8198-8DBB5205DA4C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {97C5E6E6-4D34-4F27-AA2E-0470EC32487F}

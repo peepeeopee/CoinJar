@@ -1,4 +1,4 @@
-﻿namespace CoinJar.Application.Interfaces;
+﻿namespace Application.Interfaces;
 
 public interface ICoinJar
 {

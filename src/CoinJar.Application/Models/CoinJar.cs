@@ -1,21 +1,15 @@
-﻿using CoinJar.Application.Interfaces;
+﻿using Application.Interfaces;
 
-namespace CoinJar.Application.Models;
+namespace Application.Models;
 
 public class CoinJar : ICoinJar
 {
-    public void AddCoin(ICoin coin)
-    {
-        throw new NotImplementedException();
-    }
+    private List<ICoin> _coins = new List<ICoin>();
+    private decimal _maxVolume = 42; //fluid ounces
 
-    public decimal GetTotalAmount()
-    {
-        throw new NotImplementedException();
-    }
+    public void AddCoin(ICoin coin) => _coins.Add(coin);
 
-    public void Reset()
-    {
-        throw new NotImplementedException();
-    }
+    public decimal GetTotalAmount() => _coins.Sum(c => c.Amount);
+
+    public void Reset() => _coins.Clear();
 }
