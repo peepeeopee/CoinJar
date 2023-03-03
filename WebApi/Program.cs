@@ -7,7 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddSingleton<ICoinJar, CoinJar>();
+builder.Services.AddSingleton<IAsyncCoinJar, CoinJar>();
 
 var app = builder.Build();
 
@@ -20,24 +20,35 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.MapGet("/total",
-    ctx =>
-        Task.FromResult(
-            ctx.RequestServices.GetRequiredService<ICoinJar>()
-               .GetTotalAmount()
-        )
+var simpleImplementation = app.MapGroup("").WithTags("simple");
+
+simpleImplementation.MapGet("/total",
+    async (IAsyncCoinJar coinJar) => await coinJar.GetTotalAmountAsync());
+
+simpleImplementation.MapPost("/add",
+    async (IAsyncCoinJar coinJar, Coin coin) =>
+        await coinJar.AddCoinAsync(coin)
 );
 
-app.MapPost("/add",
-    (HttpContext ctx, ICoin coin) =>
-        ctx.RequestServices.GetRequiredService<ICoinJar>()
-           .AddCoin(coin)
+simpleImplementation.MapPut("/reset",
+    async (IAsyncCoinJar coinJar) =>
+        await coinJar.ResetAsync()
 );
 
-app.MapPut("/reset",
-    (HttpContext ctx) =>
-        ctx.RequestServices.GetRequiredService<ICoinJar>()
-           .Reset()
+var restfulImplementation = app.MapGroup("/jar").WithTags("restful");
+
+restfulImplementation.MapGet("",
+    async (IAsyncCoinJar coinJar) =>
+        await coinJar.GetTotalAmountAsync()
+);
+
+restfulImplementation.MapPost("",
+    async (IAsyncCoinJar coinJar, Coin coin) =>
+        await coinJar.AddCoinAsync(coin)
+);
+restfulImplementation.MapDelete("",
+    async (IAsyncCoinJar coinJar) =>
+        await coinJar.ResetAsync()
 );
 
 app.Run();
