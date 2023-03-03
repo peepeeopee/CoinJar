@@ -11,6 +11,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{12369571-E
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application.UnitTests", "test\CoinJar.Application.UnitTests\Application.UnitTests.csproj", "{B64D2164-29F3-42E2-A89A-FE95B9785099}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "src\Domain\Domain.csproj", "{FD6369AF-790A-4F23-B468-3753B6923CE0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,6 +27,10 @@ Global
 		{B64D2164-29F3-42E2-A89A-FE95B9785099}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B64D2164-29F3-42E2-A89A-FE95B9785099}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B64D2164-29F3-42E2-A89A-FE95B9785099}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD6369AF-790A-4F23-B468-3753B6923CE0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD6369AF-790A-4F23-B468-3753B6923CE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD6369AF-790A-4F23-B468-3753B6923CE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD6369AF-790A-4F23-B468-3753B6923CE0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -32,6 +38,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{68BC58C8-63BD-4F17-8C80-A19A1A36B7E2} = {4A84D1B8-7A19-41B0-9E58-26F3FF718D69}
 		{B64D2164-29F3-42E2-A89A-FE95B9785099} = {12369571-E1E1-4A56-8198-8DBB5205DA4C}
+		{FD6369AF-790A-4F23-B468-3753B6923CE0} = {4A84D1B8-7A19-41B0-9E58-26F3FF718D69}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {97C5E6E6-4D34-4F27-AA2E-0470EC32487F}

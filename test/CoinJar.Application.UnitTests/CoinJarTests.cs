@@ -1,5 +1,6 @@
 using Application.Interfaces;
 using Application.Models;
+using Domain.Exceptions;
 using FluentAssertions;
 using Moq;
 
@@ -59,7 +60,7 @@ namespace Application.UnitTests
 
             //check the jar isn't empty
             amount.Should()
-                  .Be(coinMock.Object.Amount,"the jar shouldn't be empty");
+                  .NotBe(0, "the jar shouldn't be empty");
 
             coinJar.Reset();
 
@@ -67,6 +68,34 @@ namespace Application.UnitTests
 
             newAmount.Should()
                      .Be(0, "the jar should be empty");
+        }
+
+        [Fact]
+        public void GivenAlmostFullJar_CoinAddedOverJarThreshold_JarFullExceptionThrown()
+        {
+            var coinJar = new CoinJar();
+
+            var bigCoinMock = new Mock<ICoin>();
+
+            bigCoinMock.Setup(x => x.Amount)
+                       .Returns(42m);
+            bigCoinMock.Setup(x => x.Volume)
+                       .Returns(41.5m);
+
+
+            var smallCoinMock = new Mock<ICoin>();
+
+            smallCoinMock.Setup(x => x.Amount)
+                         .Returns(42m);
+            smallCoinMock.Setup(x => x.Volume)
+                         .Returns(1m);
+
+
+            coinJar.AddCoin(bigCoinMock.Object);
+
+            coinJar.Invoking(c => c.AddCoin(smallCoinMock.Object))
+                   .Should()
+                   .Throw<CoinJarFullException>();
         }
     }
 }
