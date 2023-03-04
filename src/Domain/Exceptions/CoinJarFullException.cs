@@ -2,7 +2,7 @@
 
 public class CoinJarFullException : Exception
 {
-    public CoinJarFullException() : base("The jar is full and cannot accept anymore coins")
+    public CoinJarFullException() : base("The jar cannot accept this coin as it will exceed the capacity")
     {
     }
 }

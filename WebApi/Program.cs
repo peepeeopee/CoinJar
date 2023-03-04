@@ -24,8 +24,7 @@ app.UseExceptionHandler(configure: webApp => webApp.Run(async ctx =>
     {
         await Results.Problem(
                          ctx.Features
-                            .Get<IExceptionHandlerFeature>()
-                            ?.Error.Message)
+                            .Get<IExceptionHandlerFeature>()!.Error.Message)
                      .ExecuteAsync(ctx);
     })
 );
